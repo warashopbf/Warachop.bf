@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Profil - Wara Chop</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { background-color:#f5f5f5; font-family:Arial; }
+    header {
+      background-color:#ff6600;
+      padding:15px 20px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+    header h1 { color:white; font-size:20px; }
+    .btn-retour {
+      background:white;
+      color:#ff6600;
+      border:none;
+      padding:8px 15px;
+      border-radius:20px;
+      font-weight:bold;
+    }
+    .profil-haut {
+      background:#ff6600;
+      padding:30px 20px;
+      text-align:center;
+    }
+    .avatar {
+      width:90px;
+      height:90px;
+      background:white;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:45px;
+      margin:0 auto 15px auto;
+    }
+    .profil-nom {
+      color:white;
+      font-size:22px;
+      font-weight:bold;
+    }
+    .profil-role {
+      color:#ffe0b2;
+      font-size:14px;
+      margin-top:5px;
+    }
+    .profil-stats {
+      display:flex;
+      justify-content:space-around;
+      background:white;
+      padding:20px;
+      margin:10px;
+      border-radius:15px;
+      box-shadow:0 2px 8px rgba(0,0,0,0.1);
+    }
+    .profil-stat {
+      text-align:center;
+    }
+    .profil-stat-nombre {
+      font-size:24px;
+      font-weight:bold;
+      color:#ff6600;
+    }
+    .profil-stat-label {
+      font-size:12px;
+      color:#666;
+      margin-top:4px;
+    }
+    .section {
+      background:white;
+      margin:10px;
+      border-radius:15px;
+      padding:20px;
+      box-shadow:0 2px 8px rgba(0,0,0,0.1);
+    }
+    .section h3 {
+      font-size:17px;
+      color:#1a1a1a;
+      margin-bottom:15px;
+    }
+    .info-item {
+      display:flex;
+      align-items:center;
+      padding:12px 0;
+      border-bottom:1px solid #eee;
+    }
+    .info-item:last-child { border-bottom:none; }
+    .info-icone {
+      font-size:22px;
+      margin-right:15px;
+      width:30px;
+    }
+    .info-contenu { flex:1; }
+    .info-label {
+      font-size:12px;
+      color:#999;
+    }
+    .info-valeur {
+      font-size:15px;
+      color:#1a1a1a;
+      font-weight:bold;
+      margin-top:2px;
+    }
+    .btn-modifier {
+      background:none;
+      border:none;
+      color:#ff6600;
+      font-size:13px;
+      font-weight:bold;
+    }
+    .menu-item {
+      display:flex;
+      align-items:center;
+      padding:15px 0;
+      border-bottom:1px solid #eee;
+    }
+    .menu-item:last-child { border-bottom:none; }
+    .menu-icone {
+      font-size:24px;
+      margin-right:15px;
+      width:30px;
+    }
+    .menu-texte { flex:1; }
+    .menu-texte p {
+      font-weight:bold;
+      color:#1a1a1a;
+      font-size:15px;
+    }
+    .menu-texte span {
+      font-size:13px;
+      color:#999;
+    }
+    .menu-fleche { color:#999; font-size:20px; }
+    .btn-deconnexion {
+      width:calc(100% - 20px);
+      margin:10px;
+      padding:15px;
+      background:#ffebee;
+      color:#f44336;
+      border:none;
+      border-radius:15px;
+      font-size:17px;
+      font-weight:bold;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>👤 Mon Profil</h1>
+    <a href="index.html">
+      <button class="btn-retour">← Retour</button>
+    </a>
+  </header>
+
+  <!-- HAUT DU PROFIL -->
+  <div class="profil-haut">
+    <div class="avatar">👤</div>
+    <div class="profil-nom" id="profil-nom">Moussa Ouédraogo</div>
+    <div class="profil-role">🛒 Acheteur • Membre depuis 2025</div>
+  </div>
+
+  <!-- STATISTIQUES -->
+  <div class="profil-stats">
+    <div class="profil-stat">
+      <div class="profil-stat-nombre">12</div>
+      <div class="profil-stat-label">Commandes</div>
+    </div>
+    <div class="profil-stat">
+      <div class="profil-stat-nombre">8</div>
+      <div class="profil-stat-label">Livrées</div>
+    </div>
+    <div class="profil-stat">
+      <div class="profil-stat-nombre">4</div>
+      <div class="profil-stat-label">En cours</div>
+    </div>
+  </div>
+
+  <!-- INFORMATIONS -->
+  <div class="section">
+    <h3>📋 Mes informations</h3>
+
+    <div class="info-item">
+      <div class="info-icone">👤</div>
+      <div class="info-contenu">
+        <div class="info-label">Nom complet</div>
+        <div class="info-valeur">Moussa Ouédraogo</div>
+      </div>
+      <button class="btn-modifier" onclick="modifier('nom')">Modifier</button>
+    </div>
+
+    <div class="info-item">
+      <div class="info-icone">📱</div>
+      <div class="info-contenu">
+        <div class="info-label">Téléphone</div>
+        <div class="info-valeur">70 12 34 56</div>
+      </div>
+      <button class="btn-modifier" onclick="modifier('téléphone')">Modifier</button>
+    </div>
+
+    <div class="info-item">
+      <div class="info-icone">📧</div>
+      <div class="info-contenu">
+        <div class="info-label">Email</div>
+        <div class="info-valeur">moussa@gmail.com</div>
+      </div>
+      <button class="btn-modifier" onclick="modifier('email')">Modifier</button>
+    </div>
+
+    <div class="info-item">
+      <div class="info-icone">📍</div>
+      <div class="info-contenu">
+        <div class="info-label">Quartier</div>
+        <div class="info-valeur">Gounghin, Ouagadougou</div>
+      </div>
+      <button class="btn-modifier" onclick="modifier('adresse')">Modifier</button>
+    </div>
+
+  </div>
+
+  <!-- MENU -->
+  <div class="section">
+    <h3>⚙️ Mon compte</h3>
+
+    <div class="menu-item" onclick="window.location='commande.html'">
+      <div class="menu-icone">📦</div>
+      <div class="menu-texte">
+        <p>Mes commandes</p>
+        <span>Voir l'historique</span>
+      </div>
+      <div class="menu-fleche">›</div>
+    </div>
+
+    <div class="menu-item" onclick="window.location='notifications.html'">
+      <div class="menu-icone">🔔</div>
+      <div class="menu-texte">
+        <p>Notifications</p>
+        <span>5 non lues</span>
+      </div>
+      <div class="menu-fleche">›</div>
+    </div>
+
+    <div class="menu-item" onclick="window.location='localisation.html'">
+      <div class="menu-icone">📍</div>
+      <div class="menu-texte">
+        <p>Ma localisation</p>
+        <span>Gérer mon adresse GPS</span>
+      </div>
+      <div class="menu-fleche">›</div>
+    </div>
+
+    <div class="menu-item" onclick="alert('Paramètres bientôt disponibles !')">
+      <div class="menu-icone">⚙️</div>
+      <div class="menu-texte">
+        <p>Paramètres</p>
+        <span>Langue, sécurité</span>
+      </div>
+      <div class="menu-fleche">›</div>
+    </div>
+
+  </div>
+
+  <!-- DECONNEXION -->
+  <button class="btn-deconnexion" onclick="deconnexion()">
+    🚪 Se déconnecter
+  </button>
+
+  <br>
+
+  <script>
+    function modifier(champ) {
+      let nouvelle = prompt("Modifier " + champ + " :");
+      if (nouvelle && nouvelle != "") {
+        alert("✅ " + champ + " modifié avec succès !");
+      }
+    }
+
+    function deconnexion() {
+      if (confirm("Tu veux vraiment te déconnecter ?")) {
+        alert("👋 À bientôt sur Wara Chop !");
+        window.location = "index.html";
+      }
+    }
+  </script>
+<!-- BARRE DE NAVIGATION -->
+<div style="
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  background:white;
+  display:flex;
+  justify-content:space-around;
+  padding:10px 0;
+  box-shadow:0 -2px 10px rgba(0,0,0,0.1);
+  z-index:999;
+">
+  <a href="index.html" style="text-decoration:none; text-align:center;">
+    <div style="font-size:24px;">🏠</div>
+    <div style="font-size:11px; color:#999;">Accueil</div>
+  </a>
+  <a href="notifications.html" style="text-decoration:none; text-align:center;">
+    <div style="font-size:24px;">🔔</div>
+    <div style="font-size:11px; color:#999;">Alertes</div>
+  </a>
+  <a href="commande.html" style="text-decoration:none; text-align:center;">
+    <div style="font-size:24px;">🛒</div>
+    <div style="font-size:11px; color:#999;">Panier</div>
+  </a>
+  <a href="localisation.html" style="text-decoration:none; text-align:center;">
+    <div style="font-size:24px;">📍</div>
+    <div style="font-size:11px; color:#999;">Carte</div>
+  </a>
+  <a href="profil.html" style="text-decoration:none; text-align:center;">
+    <div style="font-size:24px;">👤</div>
+    <div style="font-size:11px; color:#999;">Profil</div>
+  </a>
+</div>
+
+<!-- ESPACE POUR LA BARRE -->
+<div style="height:70px;"></div>
+</body>
+</html>

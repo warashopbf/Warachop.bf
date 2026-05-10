@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Notifications - Wara Chop</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { background-color:#f5f5f5; font-family:Arial; }
+    header {
+      background-color:#ff6600;
+      padding:15px 20px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+    header h1 { color:white; font-size:20px; }
+    .btn-retour {
+      background:white;
+      color:#ff6600;
+      border:none;
+      padding:8px 15px;
+      border-radius:20px;
+      font-weight:bold;
+    }
+    .tabs {
+      display:flex;
+      background:white;
+      border-bottom:2px solid #eee;
+    }
+    .tab {
+      flex:1;
+      padding:15px;
+      text-align:center;
+      font-weight:bold;
+      color:#999;
+      border:none;
+      background:none;
+      font-size:14px;
+    }
+    .tab.actif {
+      color:#ff6600;
+      border-bottom:3px solid #ff6600;
+    }
+    .notif-liste { padding:15px; }
+    .notif {
+      background:white;
+      border-radius:15px;
+      padding:15px;
+      margin-bottom:10px;
+      display:flex;
+      align-items:center;
+      box-shadow:0 2px 8px rgba(0,0,0,0.1);
+    }
+    .notif.non-lue {
+      border-left:4px solid #ff6600;
+    }
+    .notif-icone {
+      font-size:35px;
+      margin-right:15px;
+      flex-shrink:0;
+    }
+    .notif-contenu { flex:1; }
+    .notif-titre {
+      font-weight:bold;
+      color:#1a1a1a;
+      font-size:15px;
+      margin-bottom:4px;
+    }
+    .notif-texte {
+      color:#666;
+      font-size:13px;
+      margin-bottom:4px;
+    }
+    .notif-heure {
+      color:#999;
+      font-size:12px;
+    }
+    .notif-point {
+      width:10px;
+      height:10px;
+      background:#ff6600;
+      border-radius:50%;
+      margin-left:10px;
+      flex-shrink:0;
+    }
+    .section-titre {
+      font-size:14px;
+      color:#999;
+      font-weight:bold;
+      margin:15px 0 10px 0;
+      text-transform:uppercase;
+    }
+    .btn-tout-lire {
+      width:100%;
+      padding:12px;
+      background:none;
+      border:2px solid #ff6600;
+      border-radius:10px;
+      color:#ff6600;
+      font-weight:bold;
+      font-size:15px;
+      margin-bottom:15px;
+    }
+    .vide {
+      text-align:center;
+      padding:50px 20px;
+      color:#999;
+    }
+    .vide span { font-size:60px; }
+    .vide p { margin-top:15px; font-size:16px; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🔔 Notifications</h1>
+    <a href="index.html">
+      <button class="btn-retour">← Retour</button>
+    </a>
+  </header>
+
+  <!-- ONGLETS -->
+  <div class="tabs">
+    <button class="tab actif" onclick="afficherOnglet('toutes', this)">
+      Toutes (5)
+    </button>
+    <button class="tab" onclick="afficherOnglet('commandes', this)">
+      Commandes
+    </button>
+    <button class="tab" onclick="afficherOnglet('livraisons', this)">
+      Livraisons
+    </button>
+  </div>
+
+  <!-- NOTIFICATIONS -->
+  <div class="notif-liste" id="liste-toutes">
+
+    <button class="btn-tout-lire" onclick="toutLire()">
+      ✅ Tout marquer comme lu
+    </button>
+
+    <div class="section-titre">Aujourd'hui</div>
+
+    <div class="notif non-lue" id="n1">
+      <div class="notif-icone">🛒</div>
+      <div class="notif-contenu">
+        <div class="notif-titre">Nouvelle commande !</div>
+        <div class="notif-texte">Moussa a commandé des Nouilles — 700 FCFA</div>
+        <div class="notif-heure">Il y a 5 minutes</div>
+      </div>
+      <div class="notif-point" id="p1"></div>
+    </div>
+
+    <div class="notif non-lue" id="n2">
+      <div class="notif-icone">🛵</div>
+      <div class="notif-contenu">
+        <div class="notif-titre">Livreur en route !</div>
+        <div class="notif-texte">Kofi est en route vers Gounghin</div>
+        <div class="notif-heure">Il y a 10 minutes</div>
+      </div>
+      <div class="notif-point" id="p2"></div>
+    </div>
+
+    <div class="notif non-lue" id="n3">
+      <div class="notif-icone">✅</div>
+      <div class="notif-contenu">
+        <div class="notif-titre">Commande livrée !</div>
+        <div class="notif-texte">Aminata a reçu son T-shirt à Zogona</div>
+        <div class="notif-heure">Il y a 30 minutes</div>
+      </div>
+      <div class="notif-point" id="p3"></div>
+    </div>
+
+    <div class="section-titre">Hier</div>
+
+    <div class="notif" id="n4">
+      <div class="notif-icone">🏪</div>
+      <div class="notif-contenu">
+        <div class="notif-titre">Nouveau vendeur inscrit</div>
+        <div class="notif-texte">Boutique Fatou a rejoint Wara Chop</div>
+        <div class="notif-heure">Hier à 14h30</div>
+      </div>
+    </div>
+
+    <div class="notif" id="n5">
+      <div class="notif-icone">💰</div>
+      <div class="notif-contenu">
+        <div class="notif-titre">Paiement reçu</div>
+        <div class="notif-texte">Orange Money — 1 500 FCFA reçu</div>
+        <div class="notif-heure">Hier à 10h15</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- COMMANDES -->
+  <div class="notif-liste" id="liste-commandes" style="display:none;">
+    <div class="notif non-lue">
+      <div class="notif-icone">🛒</div>
+      <div class="notif-contenu">
+        <div class="notif-titre">Nouvelle commande !</div>
+        <div class="notif-texte">Moussa a commandé des Nouilles — 700 FCFA</div>
+        <div class="notif-heure">Il y a 5 minutes</div>
+      </div>
+      <div class="notif-point"></div>
+    </div>
+    <div class="notif">
+      <div class="notif-icone">✅</div>
+      <div class="notif-contenu">
+        <div class="notif-titre">Commande livrée !</div>
+        <div class="notif-texte">Aminata a reçu son T-shirt</div>
+        <div class="notif-heure">Il y a 30 minutes</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LIVRAISONS -->
+  <div class="notif-liste" id="liste-livraisons" style="display:none;">
+    <div class="notif non-lue">
+      <div class="notif-icone">🛵</div>
+      <div class="notif-contenu">
+        <div class="notif-titre">Livreur en route !</div>
+        <div class="notif-texte">Kofi est en route vers Gounghin</div>
+        <div class="notif-heure">Il y a 10 minutes</div>
+      </div>
+      <div class="notif-point"></div>
+    </div>
+    <div class="vide">
+      <span>🛵</span>
+      <p>Pas d'autres livraisons</p>
+    </div>
+  </div>
+
+  <script>
+    function afficherOnglet(nom, btn) {
+      document.getElementById("liste-toutes").style.display = "none";
+      document.getElementById("liste-commandes").style.display = "none";
+      document.getElementById("liste-livraisons").style.display = "none";
+      document.getElementById("liste-" + nom).style.display = "block";
+      document.querySelectorAll(".tab").forEach(function(t) {
+        t.classList.remove("actif");
+      });
+      btn.classList.add("actif");
+    }
+
+    function toutLire() {
+      for (let i = 1; i <= 3; i++) {
+        let notif = document.getElementById("n" + i);
+        let point = document.getElementById("p" + i);
+        if (notif) notif.classList.remove("non-lue");
+        if (point) point.style.display = "none";
+      }
+      alert("✅ Toutes les notifications sont lues !");
+    }
+  </script>
+<!-- BARRE DE NAVIGATION -->
+<div style="
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  background:white;
+  display:flex;
+  justify-content:space-around;
+  padding:10px 0;
+  box-shadow:0 -2px 10px rgba(0,0,0,0.1);
+  z-index:999;
+">
+  <a href="index.html" style="text-decoration:none; text-align:center;">
+    <div style="font-size:24px;">🏠</div>
+    <div style="font-size:11px; color:#999;">Accueil</div>
+  </a>
+  <a href="notifications.html" style="text-decoration:none; text-align:center;">
+    <div style="font-size:24px;">🔔</div>
+    <div style="font-size:11px; color:#999;">Alertes</div>
+  </a>
+  <a href="commande.html" style="text-decoration:none; text-align:center;">
+    <div style="font-size:24px;">🛒</div>
+    <div style="font-size:11px; color:#999;">Panier</div>
+  </a>
+  <a href="localisation.html" style="text-decoration:none; text-align:center;">
+    <div style="font-size:24px;">📍</div>
+    <div style="font-size:11px; color:#999;">Carte</div>
+  </a>
+  <a href="profil.html" style="text-decoration:none; text-align:center;">
+    <div style="font-size:24px;">👤</div>
+    <div style="font-size:11px; color:#999;">Profil</div>
+  </a>
+</div>
+
+<!-- ESPACE POUR LA BARRE -->
+<div style="height:70px;"></div>
+</body>
+</html>
