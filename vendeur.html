@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Espace Vendeur - Wara Chop</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { background-color:#f5f5f5; font-family:Arial; }
+    header {
+      background-color:#ff6600;
+      padding:15px 20px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+    header h1 { color:white; font-size:20px; }
+    .btn-retour {
+      background:white;
+      color:#ff6600;
+      border:none;
+      padding:8px 15px;
+      border-radius:20px;
+      font-weight:bold;
+    }
+    .stats {
+      display:grid;
+      grid-template-columns:1fr 1fr 1fr;
+      gap:10px;
+      padding:20px;
+    }
+    .stat {
+      background:white;
+      border-radius:15px;
+      padding:15px;
+      text-align:center;
+      box-shadow:0 2px 8px rgba(0,0,0,0.1);
+    }
+    .stat-nombre {
+      font-size:28px;
+      font-weight:bold;
+      color:#ff6600;
+    }
+    .stat-label {
+      font-size:12px;
+      color:#666;
+      margin-top:5px;
+    }
+    .section {
+      padding:20px;
+    }
+    .section h3 {
+      font-size:18px;
+      margin-bottom:15px;
+      color:#1a1a1a;
+    }
+    .formulaire {
+      background:white;
+      border-radius:15px;
+      padding:20px;
+      box-shadow:0 2px 8px rgba(0,0,0,0.1);
+    }
+    .champ { margin-bottom:15px; }
+    .champ label {
+      display:block;
+      color:#666;
+      font-size:14px;
+      margin-bottom:8px;
+    }
+    .champ input, .champ select, .champ textarea {
+      width:100%;
+      padding:12px 15px;
+      border:2px solid #eee;
+      border-radius:10px;
+      font-size:15px;
+      outline:none;
+    }
+    .champ input:focus,
+    .champ select:focus,
+    .champ textarea:focus { border-color:#ff6600; }
+    .champ textarea { height:80px; resize:none; }
+    .btn-publier {
+      width:100%;
+      padding:15px;
+      background:#ff6600;
+      color:white;
+      border:none;
+      border-radius:10px;
+      font-size:18px;
+      font-weight:bold;
+    }
+    .mes-produits {
+      padding:20px;
+      padding-top:0;
+    }
+    .produit-item {
+      background:white;
+      border-radius:15px;
+      padding:15px;
+      margin-bottom:10px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      box-shadow:0 2px 8px rgba(0,0,0,0.1);
+    }
+    .produit-info { flex:1; }
+    .produit-info p { font-weight:bold; }
+    .produit-info span { color:#ff6600; font-size:14px; }
+    .btn-supprimer {
+      background:#ff4444;
+      color:white;
+      border:none;
+      padding:8px 12px;
+      border-radius:10px;
+      font-size:13px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🏪 Espace Vendeur</h1>
+    <a href="index.html">
+      <button class="btn-retour">← Accueil</button>
+    </a>
+  </header>
+
+  <!-- STATISTIQUES -->
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-nombre" id="nb-produits">0</div>
+      <div class="stat-label">Produits</div>
+    </div>
+    <div class="stat">
+      <div class="stat-nombre">0</div>
+      <div class="stat-label">Commandes</div>
+    </div>
+    <div class="stat">
+      <div class="stat-nombre">0</div>
+      <div class="stat-label">FCFA</div>
+    </div>
+  </div>
+
+  <!-- FORMULAIRE -->
+  <div class="section">
+    <h3>➕ Ajouter un produit</h3>
+    <div class="formulaire">
+
+      <div class="champ">
+        <label>📦 Nom du produit</label>
+        <input type="text" id="nom-produit" placeholder="Ex: Sac en cuir"/>
+      </div>
+
+      <div class="champ">
+        <label>💰 Prix en FCFA</label>
+        <input type="number" id="prix-produit" placeholder="Ex: 5000"/>
+      </div>
+
+      <div class="champ">
+        <label>🗂️ Catégorie</label>
+        <select id="categorie-produit">
+          <option value="">-- Choisir --</option>
+          <option>🍜 Nourriture</option>
+          <option>👕 Vêtements</option>
+          <option>📱 Électronique</option>
+          <option>🏠 Maison</option>
+          <option>💄 Beauté</option>
+          <option>Autre</option>
+        </select>
+      </div>
+
+      <div class="champ">
+        <label>📝 Description</label>
+        <textarea id="desc-produit" placeholder="Décris ton produit..."></textarea>
+      </div>
+
+      <button class="btn-publier" onclick="publierProduit()">
+        🚀 Publier le produit
+      </button>
+
+    </div>
+  </div>
+
+  <!-- MES PRODUITS -->
+  <div class="mes-produits">
+    <h3 style="font-size:18px; margin-bottom:15px; color:#1a1a1a;">
+      📦 Mes produits
+    </h3>
+    <div id="liste-produits">
+      <p style="color:#999; text-align:center; padding:20px;">
+        Aucun produit pour l'instant
+      </p>
+    </div>
+  </div>
+
+  <script>
+    let produits = [];
+
+    function publierProduit() {
+      let nom = document.getElementById("nom-produit").value;
+      let prix = document.getElementById("prix-produit").value;
+      let cat = document.getElementById("categorie-produit").value;
+      let desc = document.getElementById("desc-produit").value;
+
+      if (nom == "" || prix == "" || cat == "") {
+        alert("⚠️ Remplis tous les champs !");
+        return;
+      }
+
+      produits.push({ nom, prix, cat, desc });
+      afficherProduits();
+      document.getElementById("nom-produit").value = "";
+      document.getElementById("prix-produit").value = "";
+      document.getElementById("categorie-produit").value = "";
+      document.getElementById("desc-produit").value = "";
+      alert("✅ Produit publié avec succès !");
+    }
+
+    function afficherProduits() {
+      let liste = document.getElementById("liste-produits");
+      let nb = document.getElementById("nb-produits");
+      nb.innerText = produits.length;
+      liste.innerHTML = "";
+      produits.forEach(function(p, i) {
+        liste.innerHTML += `
+          <div class="produit-item">
+            <div class="produit-info">
+              <p>${p.cat} ${p.nom}</p>
+              <span>${parseInt(p.prix).toLocaleString()} FCFA</span>
+            </div>
+            <button class="btn-supprimer" onclick="supprimer(${i})">
+              🗑️ Supprimer
+            </button>
+          </div>
+        `;
+      });
+    }
+
+    function supprimer(i) {
+      produits.splice(i, 1);
+      afficherProduits();
+    }
+  </script>
+
+</body>
+</html>

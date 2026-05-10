@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Espace Livreur - Wara Chop</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { background-color:#f5f5f5; font-family:Arial; }
+    header {
+      background-color:#ff6600;
+      padding:15px 20px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+    header h1 { color:white; font-size:20px; }
+    .btn-retour {
+      background:white;
+      color:#ff6600;
+      border:none;
+      padding:8px 15px;
+      border-radius:20px;
+      font-weight:bold;
+    }
+    .hero-livreur {
+      background-color:#1a1a1a;
+      color:white;
+      text-align:center;
+      padding:30px 20px;
+    }
+    .hero-livreur h2 { color:#ff6600; font-size:24px; margin-bottom:10px; }
+    .hero-livreur p { color:#cccccc; font-size:15px; }
+    .avantages {
+      display:grid;
+      grid-template-columns:1fr 1fr 1fr;
+      gap:10px;
+      padding:20px;
+    }
+    .avantage {
+      background:white;
+      border-radius:15px;
+      padding:15px;
+      text-align:center;
+      box-shadow:0 2px 8px rgba(0,0,0,0.1);
+    }
+    .avantage span { font-size:30px; }
+    .avantage p { font-size:12px; color:#666; margin-top:8px; font-weight:bold; }
+    .section { padding:20px; }
+    .section h3 { font-size:18px; margin-bottom:15px; color:#1a1a1a; }
+    .formulaire {
+      background:white;
+      border-radius:15px;
+      padding:20px;
+      box-shadow:0 2px 8px rgba(0,0,0,0.1);
+    }
+    .champ { margin-bottom:15px; }
+    .champ label { display:block; color:#666; font-size:14px; margin-bottom:8px; }
+    .champ input, .champ select {
+      width:100%;
+      padding:12px 15px;
+      border:2px solid #eee;
+      border-radius:10px;
+      font-size:15px;
+      outline:none;
+    }
+    .champ input:focus, .champ select:focus { border-color:#ff6600; }
+    .btn-postuler {
+      width:100%;
+      padding:15px;
+      background:#ff6600;
+      color:white;
+      border:none;
+      border-radius:10px;
+      font-size:18px;
+      font-weight:bold;
+    }
+    .etapes {
+      padding:20px;
+      padding-top:0;
+    }
+    .etape {
+      display:flex;
+      align-items:center;
+      background:white;
+      border-radius:15px;
+      padding:15px;
+      margin-bottom:10px;
+      box-shadow:0 2px 8px rgba(0,0,0,0.1);
+    }
+    .etape-num {
+      background:#ff6600;
+      color:white;
+      width:35px;
+      height:35px;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:bold;
+      margin-right:15px;
+      flex-shrink:0;
+    }
+    .etape-text p { font-weight:bold; color:#1a1a1a; }
+    .etape-text span { font-size:13px; color:#666; }
+    footer {
+      background-color:#1a1a1a;
+      color:white;
+      text-align:center;
+      padding:20px;
+      margin-top:30px;
+      font-size:14px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🛵 Espace Livreur</h1>
+    <a href="index.html">
+      <button class="btn-retour">← Accueil</button>
+    </a>
+  </header>
+
+  <div class="hero-livreur">
+    <h2>Gagne ta vie avec Wara Chop !</h2>
+    <p>Deviens livreur et commence à gagner dès aujourd'hui au Burkina Faso</p>
+  </div>
+
+  <!-- AVANTAGES -->
+  <div class="avantages">
+    <div class="avantage">
+      <span>💰</span>
+      <p>Bons revenus</p>
+    </div>
+    <div class="avantage">
+      <span>⏰</span>
+      <p>Horaires libres</p>
+    </div>
+    <div class="avantage">
+      <span>🛵</span>
+      <p>Ton véhicule</p>
+    </div>
+  </div>
+
+  <!-- COMMENT CA MARCHE -->
+  <div class="etapes">
+    <h3 style="font-size:18px; margin-bottom:15px; color:#1a1a1a;">
+      📋 Comment ça marche ?
+    </h3>
+    <div class="etape">
+      <div class="etape-num">1</div>
+      <div class="etape-text">
+        <p>Postule en remplissant le formulaire</p>
+        <span>Moins de 2 minutes</span>
+      </div>
+    </div>
+    <div class="etape">
+      <div class="etape-num">2</div>
+      <div class="etape-text">
+        <p>On vérifie ton profil</p>
+        <span>Sous 24 heures</span>
+      </div>
+    </div>
+    <div class="etape">
+      <div class="etape-num">3</div>
+      <div class="etape-text">
+        <p>Tu reçois les commandes</p>
+        <span>Sur ton téléphone</span>
+      </div>
+    </div>
+    <div class="etape">
+      <div class="etape-num">4</div>
+      <div class="etape-text">
+        <p>Tu livres et tu es payé</p>
+        <span>Via Orange Money ou Moov</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FORMULAIRE -->
+  <div class="section">
+    <h3>📝 Postuler maintenant</h3>
+    <div class="formulaire">
+
+      <div class="champ">
+        <label>👤 Nom complet</label>
+        <input type="text" id="nom" placeholder="Ex: Idrissa Sawadogo"/>
+      </div>
+
+      <div class="champ">
+        <label>📱 Numéro de téléphone</label>
+        <input type="tel" id="tel" placeholder="Ex: 70 00 00 00"/>
+      </div>
+
+      <div class="champ">
+        <label>🏙️ Ville</label>
+        <select id="ville">
+          <option value="">-- Choisir ta ville --</option>
+          <option>Ouagadougou</option>
+          <option>Bobo-Dioulasso</option>
+          <option>Koudougou</option>
+          <option>Ouahigouya</option>
+          <option>Autre</option>
+        </select>
+      </div>
+
+      <div class="champ">
+        <label>🛵 Ton véhicule</label>
+        <select id="vehicule">
+          <option value="">-- Choisir --</option>
+          <option>🛵 Moto</option>
+          <option>🚲 Vélo</option>
+          <option>🚗 Voiture</option>
+        </select>
+      </div>
+
+      <button class="btn-postuler" onclick="postuler()">
+        🚀 Envoyer ma candidature
+      </button>
+
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 Wara Chop — Burkina Faso 🇧🇫</p>
+    <p>Tous droits réservés</p>
+  </footer>
+
+  <script>
+    function postuler() {
+      let nom = document.getElementById("nom").value;
+      let tel = document.getElementById("tel").value;
+      let ville = document.getElementById("ville").value;
+      let vehicule = document.getElementById("vehicule").value;
+
+      if (nom == "" || tel == "" || ville == "" || vehicule == "") {
+        alert("⚠️ Remplis tous les champs !");
+        return;
+      }
+
+      alert("✅ Candidature envoyée " + nom + " !\nOn te contacte sous 24h au " + tel);
+
+      document.getElementById("nom").value = "";
+      document.getElementById("tel").value = "";
+      document.getElementById("ville").value = "";
+      document.getElementById("vehicule").value = "";
+    }
+  </script>
+
+</body>
+</html>
