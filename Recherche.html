@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Recherche - Wara Chop</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { background-color:#f5f5f5; font-family:Arial; }
+    header {
+      background-color:#ff6600;
+      padding:15px 20px;
+    }
+    .recherche-bar {
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+    .btn-retour {
+      background:white;
+      color:#ff6600;
+      border:none;
+      padding:8px 12px;
+      border-radius:20px;
+      font-weight:bold;
+      flex-shrink:0;
+    }
+    .recherche-input {
+      flex:1;
+      padding:10px 15px;
+      border-radius:25px;
+      border:none;
+      font-size:15px;
+      outline:none;
+    }
+    .btn-chercher {
+      background:white;
+      color:#ff6600;
+      border:none;
+      padding:8px 12px;
+      border-radius:20px;
+      font-weight:bold;
+      flex-shrink:0;
+    }
+    .filtres {
+      background:white;
+      padding:15px;
+      border-bottom:2px solid #eee;
+      overflow-x:auto;
+      white-space:nowrap;
+    }
+    .filtre-btn {
+      display:inline-block;
+      padding:8px 16px;
+      border:2px solid #eee;
+      border-radius:20px;
+      font-size:13px;
+      color:#666;
+      margin-right:8px;
+      background:white;
+    }
+    .filtre-btn.actif {
+      border-color:#ff6600;
+      color:#ff6600;
+      font-weight:bold;
+    }
+    .resultats-info {
+      padding:15px;
+      color:#666;
+      font-size:14px;
+    }
+    .resultats-info strong { color:#ff6600; }
+    .grille {
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px;
+      padding:0 10px 10px 10px;
+    }
+    .produit {
+      background:white;
+      border-radius:15px;
+      padding:15px;
+      box-shadow:0 2px 8px rgba(0,0,0,0.1);
+      text-align:center;
+      cursor:pointer;
+    }
+    .produit-emoji { font-size:45px; }
+    .produit-nom {
+      font-weight:bold;
+      color:#1a1a1a;
+      font-size:14px;
+      margin:8px 0 4px 0;
+    }
+    .produit-vendeur {
+      font-size:12px;
+      color:#999;
+      margin-bottom:6px;
+    }
+    .produit-prix {
+      color:#ff6600;
+      font-weight:bold;
+      font-size:15px;
+    }
+    .produit-note {
+      font-size:12px;
+      color:#ff6600;
+      margin-top:4px;
+    }
+    .btn-ajouter {
+      width:100%;
+      padding:8px;
+      background:#ff6600;
+      color:white;
+      border:none;
+      border-radius:10px;
+      font-size:13px;
+      margin-top:8px;
+    }
+    .vide {
+      text-align:center;
+      padding:60px 20px;
+      display:none;
+    }
+    .vide span { font-size:60px; }
+    .vide p {
+      color:#999;
+      font-size:16px;
+      margin-top:15px;
+    }
+    .recherches-recentes {
+      background:white;
+      margin:10px;
+      border-radius:15px;
+      padding:20px;
+      box-shadow:0 2px 8px rgba(0,0,0,0.1);
+    }
+    .recherches-recentes h3 {
+      font-size:16px;
+      color:#1a1a1a;
+      margin-bottom:15px;
+    }
+    .recent-item {
+      display:flex;
+      align-items:center;
+      padding:10px 0;
+      border-bottom:1px solid #eee;
+      cursor:pointer;
+    }
+    .recent-item:last-child { border-bottom:none; }
+    .recent-icone {
+      font-size:20px;
+      margin-right:12px;
+      color:#999;
+    }
+    .recent-texte {
+      flex:1;
+      color:#1a1a1a;
+      font-size:15px;
+    }
+    .recent-fleche { color:#999; }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="recherche-bar">
+      <a href="index.html">
+        <button class="btn-retour">←</button>
+      </a>
+      <input
+        type="text"
+        class="recherche-input"
+        id="input-recherche"
+        placeholder="🔍 Rechercher..."
+        oninput="rechercherEnTempsReel()"
+      />
+      <button class="btn-chercher" onclick="chercher()">OK</button>
+    </div>
+  </header>
+
+  <!-- FILTRES -->
+  <div class="filtres">
+    <button class="filtre-btn actif" onclick="filtrer('tous', this)">
+      Tous
+    </button>
+    <button class="filtre-btn" onclick="filtrer('nourriture', this)">
+      🍜 Nourriture
+    </button>
+    <button class="filtre-btn" onclick="filtrer('vetements', this)">
+      👕 Vêtements
+    </button>
+    <button class="filtre-btn" onclick="filtrer('electronique', this)">
+      📱 Électronique
+    </button>
+    <button class="filtre-btn" onclick="filtrer('boissons', this)">
+      🥤 Boissons
+    </button>
+    <button class="filtre-btn" onclick="filtrer('maison', this)">
+      🏠 Maison
+    </button>
+  </div>
+
+  <!-- INFO RESULTATS -->
+  <div class="resultats-info" id="resultats-info">
+    Recherches populaires 🔥
+  </div>
+
+  <!-- RECHERCHES RECENTES -->
+  <div class="recherches-recentes" id="recentes">
+    <h3>🕐 Recherches récentes</h3>
+    <div class="recent-item" onclick="remplir('Nouilles')">
+      <span class="recent-icone">🕐</span>
+      <span class="recent-texte">Nouilles</span>
+      <span class="recent-fleche">›</span>
+    </div>
+    <div class="recent-item" onclick="remplir('T-shirt')">
+      <span class="recent-icone">🕐</span>
+      <span class="recent-texte">T-shirt</span>
+      <span class="recent-fleche">›</span>
+    </div>
+    <div class="recent-item" onclick="remplir('Crédit téléphone')">
+      <span class="recent-icone">🕐</span>
+      <span class="recent-texte">Crédit téléphone</span>
+      <span class="recent-fleche">›</span>
+    </div>
+    <div class="recent-item" onclick="remplir('Bissap')">
+      <span class="recent-icone">🕐</span>
+      <span class="recent-texte">Bissap</span>
+      <span class="recent-fleche">›</span>
+    </div>
+  </div>
+
+  <!-- GRILLE PRODUITS -->
+  <div class="grille" id="grille-produits" style="display:none;"></div>
+
+  <!-- VIDE -->
+  <div class="vide" id="vide">
+    <span>🔍</span>
+    <p>Aucun produit trouvé</p>
+  </div>
+
+  <!-- BARRE DE NAVIGATION -->
+  <div style="position:fixed; bottom:0; left:0; right:0; background:white; display:flex; justify-content:space-around; padding:10px 0; box-shadow:0 -2px 10px rgba(0,0,0,0.1); z-index:999;">
+    <a href="index.html" style="text-decoration:none; text-align:center;">
+      <div style="font-size:24px;">🏠</div>
+      <div style="font-size:11px; color:#999;">Accueil</div>
+    </a>
+    <a href="notifications.html" style="text-decoration:none; text-align:center;">
+      <div style="font-size:24px;">🔔</div>
+      <div style="font-size:11px; color:#999;">Alertes</div>
+    </a>
+    <a href="commande.html" style="text-decoration:none; text-align:center;">
+      <div style="font-size:24px;">🛒</div>
+      <div style="font-size:11px; color:#999;
