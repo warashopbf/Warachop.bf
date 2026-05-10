@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Produit - Wara Chop</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { background-color:#f5f5f5; font-family:Arial; }
+    header {
+      background-color:#ff6600;
+      padding:15px 20px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+    header h1 { color:white; font-size:20px; }
+    .btn-retour {
+      background:white;
+      color:#ff6600;
+      border:none;
+      padding:8px 15px;
+      border-radius:20px;
+      font-weight:bold;
+    }
+    .produit-image {
+      background:white;
+      text-align:center;
+      padding:40px 20px;
+      font-size:100px;
+    }
+    .produit-info {
+      background:white;
+      padding:20px;
+      margin-top:10px;
+    }
+    .produit-nom {
+      font-size:24px;
+      font-weight:bold;
+      color:#1a1a1a;
+    }
+    .produit-prix {
+      font-size:28px;
+      color:#ff6600;
+      font-weight:bold;
+      margin-top:10px;
+    }
+    .produit-vendeur {
+      color:#666;
+      font-size:14px;
+      margin-top:8px;
+    }
+    .badge {
+      background:#e8f5e9;
+      color:green;
+      padding:5px 12px;
+      border-radius:20px;
+      font-size:13px;
+      display:inline-block;
+      margin-top:8px;
+    }
+    .description {
+      background:white;
+      padding:20px;
+      margin-top:10px;
+    }
+    .description h3 {
+      font-size:18px;
+      margin-bottom:10px;
+      color:#1a1a1a;
+    }
+    .description p {
+      color:#666;
+      font-size:15px;
+      line-height:1.6;
+    }
+    .livraison {
+      background:white;
+      padding:20px;
+      margin-top:10px;
+    }
+    .livraison h3 {
+      font-size:18px;
+      margin-bottom:15px;
+      color:#1a1a1a;
+    }
+    .livraison-item {
+      display:flex;
+      align-items:center;
+      margin-bottom:12px;
+    }
+    .livraison-item span {
+      font-size:24px;
+      margin-right:12px;
+    }
+    .livraison-item p {
+      color:#666;
+      font-size:14px;
+    }
+    .livraison-item strong {
+      color:#1a1a1a;
+    }
+    .btn-commander {
+      position:fixed;
+      bottom:0;
+      left:0;
+      right:0;
+      background:#ff6600;
+      color:white;
+      border:none;
+      padding:20px;
+      font-size:20px;
+      font-weight:bold;
+      text-align:center;
+    }
+    .espace-bas {
+      height:80px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Wara Chop 🛒</h1>
+    <a href="index.html">
+      <button class="btn-retour">← Retour</button>
+    </a>
+  </header>
+
+  <!-- IMAGE PRODUIT -->
+  <div class="produit-image">🍜</div>
+
+  <!-- INFOS PRODUIT -->
+  <div class="produit-info">
+    <div class="produit-nom">Nouilles instantanées</div>
+    <div class="produit-prix">200 FCFA</div>
+    <div class="produit-vendeur">🏪 Vendu par : Boutique Aminata</div>
+    <div class="badge">✅ En stock</div>
+  </div>
+
+  <!-- DESCRIPTION -->
+  <div class="description">
+    <h3>📝 Description</h3>
+    <p>
+      Nouilles instantanées de qualité supérieure.
+      Cuisson rapide en 3 minutes. Disponible en
+      plusieurs saveurs. Idéal pour un repas rapide
+      et savoureux au Burkina Faso.
+    </p>
+  </div>
+
+  <!-- LIVRAISON -->
+  <div class="livraison">
+    <h3>🛵 Livraison</h3>
+    <div class="livraison-item">
+      <span>⏰</span>
+      <p><strong>Délai :</strong> 30 à 60 minutes</p>
+    </div>
+    <div class="livraison-item">
+      <span>💰</span>
+      <p><strong>Frais de livraison :</strong> 500 FCFA</p>
+    </div>
+    <div class="livraison-item">
+      <span>📍</span>
+      <p><strong>Zone :</strong> Ouagadougou</p>
+    </div>
+    <div class="livraison-item">
+      <span>💳</span>
+      <p><strong>Paiement :</strong> Orange Money, Moov Money</p>
+    </div>
+  </div>
+
+  <div class="espace-bas"></div>
+
+  <!-- BOUTON COMMANDER -->
+  <button class="btn-commander" onclick="commander()">
+    🛒 Commander maintenant
+  </button>
+
+  <script>
+    function commander() {
+  window.location = "commande.html";
+} Un livreur vous contacte bientôt au Burkina Faso !");
+    }
+  </script>
+
+</body>
+</html>
