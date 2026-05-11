@@ -5,111 +5,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     * { margin:0; padding:0; box-sizing:border-box; }
-    body { background-color:#f5f5f5; font-family:Arial; }
-    header {
-      background-color:#ff6600;
-      padding:15px 20px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-    }
+    body { background-color:#f5f5f5; font-family:Arial; padding-bottom:70px; }
+    header { background-color:#ff6600; padding:15px 20px; display:flex; justify-content:space-between; align-items:center; }
     header h1 { color:white; font-size:20px; }
-    .btn-retour {
-      background:white;
-      color:#ff6600;
-      border:none;
-      padding:8px 15px;
-      border-radius:20px;
-      font-weight:bold;
-    }
-    .hero-livreur {
-      background-color:#1a1a1a;
-      color:white;
-      text-align:center;
-      padding:30px 20px;
-    }
+    .btn-retour { background:white; color:#ff6600; border:none; padding:8px 15px; border-radius:20px; font-weight:bold; }
+    .hero-livreur { background-color:#1a1a1a; color:white; text-align:center; padding:30px 20px; }
     .hero-livreur h2 { color:#ff6600; font-size:24px; margin-bottom:10px; }
     .hero-livreur p { color:#cccccc; font-size:15px; }
-    .avantages {
-      display:grid;
-      grid-template-columns:1fr 1fr 1fr;
-      gap:10px;
-      padding:20px;
-    }
-    .avantage {
-      background:white;
-      border-radius:15px;
-      padding:15px;
-      text-align:center;
-      box-shadow:0 2px 8px rgba(0,0,0,0.1);
-    }
+    .avantages { display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; padding:15px; }
+    .avantage { background:white; border-radius:15px; padding:15px; text-align:center; box-shadow:0 2px 8px rgba(0,0,0,0.1); }
     .avantage span { font-size:30px; }
     .avantage p { font-size:12px; color:#666; margin-top:8px; font-weight:bold; }
-    .section { padding:20px; }
-    .section h3 { font-size:18px; margin-bottom:15px; color:#1a1a1a; }
-    .formulaire {
-      background:white;
-      border-radius:15px;
-      padding:20px;
-      box-shadow:0 2px 8px rgba(0,0,0,0.1);
-    }
-    .champ { margin-bottom:15px; }
-    .champ label { display:block; color:#666; font-size:14px; margin-bottom:8px; }
-    .champ input, .champ select {
-      width:100%;
-      padding:12px 15px;
-      border:2px solid #eee;
-      border-radius:10px;
-      font-size:15px;
-      outline:none;
-    }
-    .champ input:focus, .champ select:focus { border-color:#ff6600; }
-    .btn-postuler {
-      width:100%;
-      padding:15px;
-      background:#ff6600;
-      color:white;
-      border:none;
-      border-radius:10px;
-      font-size:18px;
-      font-weight:bold;
-    }
-    .etapes {
-      padding:20px;
-      padding-top:0;
-    }
-    .etape {
-      display:flex;
-      align-items:center;
-      background:white;
-      border-radius:15px;
-      padding:15px;
-      margin-bottom:10px;
-      box-shadow:0 2px 8px rgba(0,0,0,0.1);
-    }
-    .etape-num {
-      background:#ff6600;
-      color:white;
-      width:35px;
-      height:35px;
-      border-radius:50%;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-weight:bold;
-      margin-right:15px;
-      flex-shrink:0;
-    }
+    .etapes { padding:15px; }
+    .etapes h3 { font-size:18px; margin-bottom:15px; color:#1a1a1a; }
+    .etape { display:flex; align-items:center; background:white; border-radius:15px; padding:15px; margin-bottom:10px; box-shadow:0 2px 8px rgba(0,0,0,0.1); }
+    .etape-num { background:#ff6600; color:white; width:35px; height:35px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:bold; margin-right:15px; flex-shrink:0; }
     .etape-text p { font-weight:bold; color:#1a1a1a; }
     .etape-text span { font-size:13px; color:#666; }
-    footer {
-      background-color:#1a1a1a;
-      color:white;
-      text-align:center;
-      padding:20px;
-      margin-top:30px;
-      font-size:14px;
-    }
+    .section { padding:15px; }
+    .section h3 { font-size:18px; margin-bottom:15px; color:#1a1a1a; }
+    .formulaire { background:white; border-radius:15px; padding:20px; box-shadow:0 2px 8px rgba(0,0,0,0.1); }
+    .champ { margin-bottom:15px; }
+    .champ label { display:block; color:#666; font-size:14px; margin-bottom:8px; }
+    .champ input, .champ select { width:100%; padding:12px 15px; border:2px solid #eee; border-radius:10px; font-size:15px; outline:none; }
+    .champ input:focus, .champ select:focus { border-color:#ff6600; }
+    .btn-postuler { width:100%; padding:15px; background:#ff6600; color:white; border:none; border-radius:10px; font-size:18px; font-weight:bold; }
+    .navbar { position:fixed; bottom:0; left:0; right:0; background:white; display:flex; justify-content:space-around; padding:10px 0; box-shadow:0 -2px 10px rgba(0,0,0,0.1); z-index:999; }
+    .navbar a { text-decoration:none; text-align:center; }
+    .navbar a div:first-child { font-size:24px; }
+    .navbar a div:last-child { font-size:11px; color:#999; }
   </style>
 </head>
 <body>
@@ -123,10 +47,9 @@
 
   <div class="hero-livreur">
     <h2>Gagne ta vie avec Wara Chop !</h2>
-    <p>Deviens livreur et commence à gagner dès aujourd'hui au Burkina Faso</p>
+    <p>Deviens livreur et commence à gagner dès aujourd'hui</p>
   </div>
 
-  <!-- AVANTAGES -->
   <div class="avantages">
     <div class="avantage">
       <span>💰</span>
@@ -142,11 +65,8 @@
     </div>
   </div>
 
-  <!-- COMMENT CA MARCHE -->
   <div class="etapes">
-    <h3 style="font-size:18px; margin-bottom:15px; color:#1a1a1a;">
-      📋 Comment ça marche ?
-    </h3>
+    <h3>📋 Comment ça marche ?</h3>
     <div class="etape">
       <div class="etape-num">1</div>
       <div class="etape-text">
@@ -177,21 +97,17 @@
     </div>
   </div>
 
-  <!-- FORMULAIRE -->
   <div class="section">
     <h3>📝 Postuler maintenant</h3>
     <div class="formulaire">
-
       <div class="champ">
         <label>👤 Nom complet</label>
         <input type="text" id="nom" placeholder="Ex: Idrissa Sawadogo"/>
       </div>
-
       <div class="champ">
         <label>📱 Numéro de téléphone</label>
         <input type="tel" id="tel" placeholder="Ex: 70 00 00 00"/>
       </div>
-
       <div class="champ">
         <label>🏙️ Ville</label>
         <select id="ville">
@@ -203,7 +119,6 @@
           <option>Autre</option>
         </select>
       </div>
-
       <div class="champ">
         <label>🛵 Ton véhicule</label>
         <select id="vehicule">
@@ -213,18 +128,19 @@
           <option>🚗 Voiture</option>
         </select>
       </div>
-
       <button class="btn-postuler" onclick="postuler()">
         🚀 Envoyer ma candidature
       </button>
-
     </div>
   </div>
 
-  <footer>
-    <p>© 2025 Wara Chop — Burkina Faso 🇧🇫</p>
-    <p>Tous droits réservés</p>
-  </footer>
+  <nav class="navbar">
+    <a href="index.html"><div>🏠</div><div>Accueil</div></a>
+    <a href="recherche.html"><div>🔍</div><div>Chercher</div></a>
+    <a href="notifications.html"><div>🔔</div><div>Alertes</div></a>
+    <a href="localisation.html"><div>📍</div><div>Carte</div></a>
+    <a href="profil.html"><div>👤</div><div>Profil</div></a>
+  </nav>
 
   <script>
     function postuler() {
@@ -239,49 +155,12 @@
       }
 
       alert("✅ Candidature envoyée " + nom + " !\nOn te contacte sous 24h au " + tel);
-
       document.getElementById("nom").value = "";
       document.getElementById("tel").value = "";
       document.getElementById("ville").value = "";
       document.getElementById("vehicule").value = "";
     }
   </script>
-<!-- BARRE DE NAVIGATION -->
-<div style="
-  position:fixed;
-  bottom:0;
-  left:0;
-  right:0;
-  background:white;
-  display:flex;
-  justify-content:space-around;
-  padding:10px 0;
-  box-shadow:0 -2px 10px rgba(0,0,0,0.1);
-  z-index:999;
-">
-  <a href="index.html" style="text-decoration:none; text-align:center;">
-    <div style="font-size:24px;">🏠</div>
-    <div style="font-size:11px; color:#999;">Accueil</div>
-  </a>
-  <a href="notifications.html" style="text-decoration:none; text-align:center;">
-    <div style="font-size:24px;">🔔</div>
-    <div style="font-size:11px; color:#999;">Alertes</div>
-  </a>
-  <a href="commande.html" style="text-decoration:none; text-align:center;">
-    <div style="font-size:24px;">🛒</div>
-    <div style="font-size:11px; color:#999;">Panier</div>
-  </a>
-  <a href="localisation.html" style="text-decoration:none; text-align:center;">
-    <div style="font-size:24px;">📍</div>
-    <div style="font-size:11px; color:#999;">Carte</div>
-  </a>
-  <a href="profil.html" style="text-decoration:none; text-align:center;">
-    <div style="font-size:24px;">👤</div>
-    <div style="font-size:11px; color:#999;">Profil</div>
-  </a>
-</div>
 
-<!-- ESPACE POUR LA BARRE -->
-<div style="height:70px;"></div>
 </body>
 </html>

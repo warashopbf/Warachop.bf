@@ -5,109 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     * { margin:0; padding:0; box-sizing:border-box; }
-    body { background-color:#f5f5f5; font-family:Arial; }
-    header {
-      background-color:#ff6600;
-      padding:15px 20px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-    }
+    body { background-color:#f5f5f5; font-family:Arial; padding-bottom:70px; }
+    header { background-color:#ff6600; padding:15px 20px; display:flex; justify-content:space-between; align-items:center; }
     header h1 { color:white; font-size:20px; }
-    .btn-retour {
-      background:white;
-      color:#ff6600;
-      border:none;
-      padding:8px 15px;
-      border-radius:20px;
-      font-weight:bold;
-    }
-    .tabs {
-      display:flex;
-      background:white;
-      border-bottom:2px solid #eee;
-    }
-    .tab {
-      flex:1;
-      padding:15px;
-      text-align:center;
-      font-weight:bold;
-      color:#999;
-      border:none;
-      background:none;
-      font-size:14px;
-    }
-    .tab.actif {
-      color:#ff6600;
-      border-bottom:3px solid #ff6600;
-    }
+    .btn-retour { background:white; color:#ff6600; border:none; padding:8px 15px; border-radius:20px; font-weight:bold; }
+    .tabs { display:flex; background:white; border-bottom:2px solid #eee; }
+    .tab { flex:1; padding:15px; text-align:center; font-weight:bold; color:#999; border:none; background:none; font-size:14px; cursor:pointer; }
+    .tab.actif { color:#ff6600; border-bottom:3px solid #ff6600; }
     .notif-liste { padding:15px; }
-    .notif {
-      background:white;
-      border-radius:15px;
-      padding:15px;
-      margin-bottom:10px;
-      display:flex;
-      align-items:center;
-      box-shadow:0 2px 8px rgba(0,0,0,0.1);
-    }
-    .notif.non-lue {
-      border-left:4px solid #ff6600;
-    }
-    .notif-icone {
-      font-size:35px;
-      margin-right:15px;
-      flex-shrink:0;
-    }
+    .notif { background:white; border-radius:15px; padding:15px; margin-bottom:10px; display:flex; align-items:center; box-shadow:0 2px 8px rgba(0,0,0,0.1); }
+    .notif.non-lue { border-left:4px solid #ff6600; }
+    .notif-icone { font-size:35px; margin-right:15px; flex-shrink:0; }
     .notif-contenu { flex:1; }
-    .notif-titre {
-      font-weight:bold;
-      color:#1a1a1a;
-      font-size:15px;
-      margin-bottom:4px;
-    }
-    .notif-texte {
-      color:#666;
-      font-size:13px;
-      margin-bottom:4px;
-    }
-    .notif-heure {
-      color:#999;
-      font-size:12px;
-    }
-    .notif-point {
-      width:10px;
-      height:10px;
-      background:#ff6600;
-      border-radius:50%;
-      margin-left:10px;
-      flex-shrink:0;
-    }
-    .section-titre {
-      font-size:14px;
-      color:#999;
-      font-weight:bold;
-      margin:15px 0 10px 0;
-      text-transform:uppercase;
-    }
-    .btn-tout-lire {
-      width:100%;
-      padding:12px;
-      background:none;
-      border:2px solid #ff6600;
-      border-radius:10px;
-      color:#ff6600;
-      font-weight:bold;
-      font-size:15px;
-      margin-bottom:15px;
-    }
-    .vide {
-      text-align:center;
-      padding:50px 20px;
-      color:#999;
-    }
-    .vide span { font-size:60px; }
-    .vide p { margin-top:15px; font-size:16px; }
+    .notif-titre { font-weight:bold; color:#1a1a1a; font-size:15px; margin-bottom:4px; }
+    .notif-texte { color:#666; font-size:13px; margin-bottom:4px; }
+    .notif-heure { color:#999; font-size:12px; }
+    .notif-point { width:10px; height:10px; background:#ff6600; border-radius:50%; margin-left:10px; flex-shrink:0; }
+    .section-titre { font-size:14px; color:#999; font-weight:bold; margin:15px 0 10px 0; text-transform:uppercase; }
+    .btn-tout-lire { width:100%; padding:12px; background:none; border:2px solid #ff6600; border-radius:10px; color:#ff6600; font-weight:bold; font-size:15px; margin-bottom:15px; cursor:pointer; }
+    .navbar { position:fixed; bottom:0; left:0; right:0; background:white; display:flex; justify-content:space-around; padding:10px 0; box-shadow:0 -2px 10px rgba(0,0,0,0.1); z-index:999; }
+    .navbar a { text-decoration:none; text-align:center; }
+    .navbar a div:first-child { font-size:24px; }
+    .navbar a div:last-child { font-size:11px; color:#999; }
   </style>
 </head>
 <body>
@@ -119,26 +38,14 @@
     </a>
   </header>
 
-  <!-- ONGLETS -->
   <div class="tabs">
-    <button class="tab actif" onclick="afficherOnglet('toutes', this)">
-      Toutes (5)
-    </button>
-    <button class="tab" onclick="afficherOnglet('commandes', this)">
-      Commandes
-    </button>
-    <button class="tab" onclick="afficherOnglet('livraisons', this)">
-      Livraisons
-    </button>
+    <button class="tab actif" onclick="afficherOnglet('toutes', this)">Toutes (5)</button>
+    <button class="tab" onclick="afficherOnglet('commandes', this)">Commandes</button>
+    <button class="tab" onclick="afficherOnglet('livraisons', this)">Livraisons</button>
   </div>
 
-  <!-- NOTIFICATIONS -->
   <div class="notif-liste" id="liste-toutes">
-
-    <button class="btn-tout-lire" onclick="toutLire()">
-      ✅ Tout marquer comme lu
-    </button>
-
+    <button class="btn-tout-lire" onclick="toutLire()">✅ Tout marquer comme lu</button>
     <div class="section-titre">Aujourd'hui</div>
 
     <div class="notif non-lue" id="n1">
@@ -190,10 +97,8 @@
         <div class="notif-heure">Hier à 10h15</div>
       </div>
     </div>
-
   </div>
 
-  <!-- COMMANDES -->
   <div class="notif-liste" id="liste-commandes" style="display:none;">
     <div class="notif non-lue">
       <div class="notif-icone">🛒</div>
@@ -214,7 +119,6 @@
     </div>
   </div>
 
-  <!-- LIVRAISONS -->
   <div class="notif-liste" id="liste-livraisons" style="display:none;">
     <div class="notif non-lue">
       <div class="notif-icone">🛵</div>
@@ -225,11 +129,15 @@
       </div>
       <div class="notif-point"></div>
     </div>
-    <div class="vide">
-      <span>🛵</span>
-      <p>Pas d'autres livraisons</p>
-    </div>
   </div>
+
+  <nav class="navbar">
+    <a href="index.html"><div>🏠</div><div>Accueil</div></a>
+    <a href="recherche.html"><div>🔍</div><div>Chercher</div></a>
+    <a href="notifications.html"><div>🔔</div><div>Alertes</div></a>
+    <a href="localisation.html"><div>📍</div><div>Carte</div></a>
+    <a href="profil.html"><div>👤</div><div>Profil</div></a>
+  </nav>
 
   <script>
     function afficherOnglet(nom, btn) {
@@ -253,42 +161,6 @@
       alert("✅ Toutes les notifications sont lues !");
     }
   </script>
-<!-- BARRE DE NAVIGATION -->
-<div style="
-  position:fixed;
-  bottom:0;
-  left:0;
-  right:0;
-  background:white;
-  display:flex;
-  justify-content:space-around;
-  padding:10px 0;
-  box-shadow:0 -2px 10px rgba(0,0,0,0.1);
-  z-index:999;
-">
-  <a href="index.html" style="text-decoration:none; text-align:center;">
-    <div style="font-size:24px;">🏠</div>
-    <div style="font-size:11px; color:#999;">Accueil</div>
-  </a>
-  <a href="notifications.html" style="text-decoration:none; text-align:center;">
-    <div style="font-size:24px;">🔔</div>
-    <div style="font-size:11px; color:#999;">Alertes</div>
-  </a>
-  <a href="commande.html" style="text-decoration:none; text-align:center;">
-    <div style="font-size:24px;">🛒</div>
-    <div style="font-size:11px; color:#999;">Panier</div>
-  </a>
-  <a href="localisation.html" style="text-decoration:none; text-align:center;">
-    <div style="font-size:24px;">📍</div>
-    <div style="font-size:11px; color:#999;">Carte</div>
-  </a>
-  <a href="profil.html" style="text-decoration:none; text-align:center;">
-    <div style="font-size:24px;">👤</div>
-    <div style="font-size:11px; color:#999;">Profil</div>
-  </a>
-</div>
 
-<!-- ESPACE POUR LA BARRE -->
-<div style="height:70px;"></div>
 </body>
 </html>

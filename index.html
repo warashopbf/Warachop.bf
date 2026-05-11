@@ -5,187 +5,141 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     * { margin:0; padding:0; box-sizing:border-box; }
-    body { background-color:#f5f5f5; font-family:Arial; }
+    body { background-color:#f5f5f5; font-family:Arial; padding-bottom:70px; }
     header { background-color:#ff6600; padding:15px 20px; display:flex; justify-content:space-between; align-items:center; }
     header h1 { color:white; font-size:24px; }
-    .btn-header { background-color:white; color:#ff6600; border:none; padding:8px 15px; border-radius:20px; font-weight:bold; }
-    .hero { background-color:#1a1a1a; color:white; text-align:center; padding:50px 20px; }
-    .hero h2 { font-size:28px; margin-bottom:10px; color:#ff6600; }
-    .hero p { font-size:16px; margin-bottom:25px; color:#cccccc; }
-    .hero button { background-color:#ff6600; color:white; border:none; padding:15px 35px; border-radius:25px; font-size:18px; font-weight:bold; }
-    .categories { padding:30px 20px; }
-    .cards { display:grid; grid-template-columns:1fr 1fr; gap:15px; margin-top:15px; }
-    .card { background-color:white; border-radius:15px; padding:25px 15px; text-align:center; box-shadow:0 2px 8px rgba(0,0,0,0.1); cursor:pointer; }
+    .header-btns { display:flex; gap:10px; }
+    .btn-header { background-color:white; color:#ff6600; border:none; padding:8px 12px; border-radius:20px; font-weight:bold; }
+    .search-bar { background-color:#ff6600; padding:0 20px 15px 20px; }
+    .search-bar input { width:100%; padding:12px 15px; border-radius:25px; border:none; font-size:16px; outline:none; }
+    .hero { background-color:#1a1a1a; color:white; text-align:center; padding:40px 20px; }
+    .hero h2 { font-size:26px; margin-bottom:10px; color:#ff6600; }
+    .hero p { font-size:15px; margin-bottom:25px; color:#cccccc; }
+    .hero button { background-color:#ff6600; color:white; border:none; padding:15px 35px; border-radius:25px; font-size:17px; font-weight:bold; }
+    .section { padding:20px; }
+    .section h3 { font-size:20px; color:#1a1a1a; margin-bottom:15px; }
+    .panier-count { color:#ff6600; font-weight:bold; margin-bottom:15px; }
+    .cards { display:grid; grid-template-columns:1fr 1fr; gap:15px; }
+    .card { background:white; border-radius:15px; padding:20px 15px; text-align:center; box-shadow:0 2px 8px rgba(0,0,0,0.1); cursor:pointer; }
     .card span { font-size:35px; }
-    .card p { margin-top:10px; font-weight:bold; color:#1a1a1a; }
-    .produits { padding:20px; }
+    .card p { margin-top:10px; font-weight:bold; color:#1a1a1a; font-size:14px; }
     .grille { display:grid; grid-template-columns:1fr 1fr; gap:15px; }
-    .produit { background:white; border-radius:15px; padding:15px; box-shadow:0 2px 8px rgba(0,0,0,0.1); text-align:center; }
-    .produit-emoji { font-size:50px; }
-    .produit-nom { font-weight:bold; margin:8px 0; }
+    .produit { background:white; border-radius:15px; padding:15px; box-shadow:0 2px 8px rgba(0,0,0,0.1); text-align:center; cursor:pointer; }
+    .produit-emoji { font-size:45px; }
+    .produit-nom { font-weight:bold; margin:8px 0 4px 0; font-size:14px; color:#1a1a1a; }
     .produit-prix { color:#ff6600; font-weight:bold; }
-    .btn-ajouter { background:#ff6600; color:white; border:none; padding:8px 15px; border-radius:20px; margin-top:8px; width:100%; }
-    footer { background-color:#1a1a1a; color:white; text-align:center; padding:20px; margin-top:30px; font-size:14px; }
+    .btn-ajouter { background:#ff6600; color:white; border:none; padding:8px 15px; border-radius:20px; margin-top:8px; width:100%; font-size:13px; }
+    footer { background-color:#1a1a1a; color:white; text-align:center; padding:20px; font-size:14px; }
+    footer a { color:#ff6600; display:block; margin-top:8px; font-size:13px; text-decoration:none; }
+    .navbar { position:fixed; bottom:0; left:0; right:0; background:white; display:flex; justify-content:space-around; padding:10px 0; box-shadow:0 -2px 10px rgba(0,0,0,0.1); z-index:999; }
+    .navbar a { text-decoration:none; text-align:center; }
+    .navbar a div:first-child { font-size:24px; }
+    .navbar a div:last-child { font-size:11px; color:#999; }
   </style>
 </head>
 <body>
 
-<header>
-  <h1>Wara Chop 🛒</h1>
-  <div style="display:flex; gap:10px;">
-  <a href="notifications.html">
-    <button class="btn-header">🔔</button>
-  </a>
-  <a href="profil.html">
-    <button class="btn-header">👤</button>
-  </a>
-  <a href="connexion.html">
-    <button class="btn-header">Connexion</button>
-  </a>
-</div>
-</header>
+  <header>
+    <h1>Wara Chop 🛒</h1>
+    <div class="header-btns">
+      <a href="notifications.html"><button class="btn-header">🔔</button></a>
+      <a href="profil.html"><button class="btn-header">👤</button></a>
+      <a href="connexion.html"><button class="btn-header">Connexion</button></a>
+    </div>
+  </header>
 
-  <div style="background-color:#ff6600; padding:0 20px 15px 20px;">
-    <input type="text" placeholder="🔍 Rechercher un produit..." style="width:100%; padding:12px 15px; border-radius:25px; border:none; font-size:16px;"/>
+  <div class="search-bar">
+    <input type="text" placeholder="🔍 Rechercher un produit..." onclick="window.location='recherche.html'" readonly/>
   </div>
 
   <div class="hero">
     <h2>Viens prendre ce dont tu as besoin !</h2>
     <p>Achetez, vendez et faites livrer partout au Burkina Faso</p>
-    <button>Explorer les produits</button>
+    <button onclick="window.location='recherche.html'">Explorer les produits</button>
   </div>
 
-  <div class="categories">
-    <h3 style="font-size:20px; color:#1a1a1a;">Nos catégories</h3>
-    <p class="panier-count" style="color:#ff6600; font-weight:bold; margin-top:10px;">
-      🛒 Panier : 0 article
-    </p>
+  <div class="section">
+    <h3>Nos catégories</h3>
+    <p class="panier-count" id="panier-count">🛒 Panier : 0 article</p>
     <div class="cards">
-
-      <div class="card">
-        <span>🍜</span>
-        <p>Nourriture</p>
+      <div class="card" onclick="window.location='recherche.html'">
+        <span>🍜</span><p>Nourriture</p>
       </div>
-
-      <div class="card">
-        <span>👕</span>
-        <p>Vêtements</p>
+      <div class="card" onclick="window.location='recherche.html'">
+        <span>👕</span><p>Vêtements</p>
       </div>
-
-      <div class="card">
-        <span>📱</span>
-        <p>Électronique</p>
+      <div class="card" onclick="window.location='recherche.html'">
+        <span>📱</span><p>Électronique</p>
       </div>
-
       <div class="card" onclick="window.location='vendeur.html'">
-        <span>🏪</span>
-        <p>Espace Vendeur</p>
+        <span>🏪</span><p>Espace Vendeur</p>
       </div>
-
       <div class="card" onclick="window.location='livreur.html'">
-        <span>🛵</span>
-        <p>Devenir livreur</p>
+        <span>🛵</span><p>Devenir Livreur</p>
       </div>
-
+      <div class="card" onclick="window.location='admin.html'">
+        <span>👑</span><p>Admin</p>
+      </div>
     </div>
   </div>
 
-  <div class="produits">
-    <h3 style="font-size:20px; margin-bottom:20px; color:#1a1a1a;">🔥 Produits populaires</h3>
+  <div class="section">
+    <h3>🔥 Produits populaires</h3>
     <div class="grille">
-
-      <div class="produit" onclick="window.location='produit.html'" style="cursor:pointer;">
-  <div class="produit-emoji">🍜</div>
-        <p class="produit-nom">Nouilles instantanées</p>
-        <p class="produit-prix">200 FCFA</p>
+      <div class="produit" onclick="window.location='produit.html'">
+        <div class="produit-emoji">🍜</div>
+        <div class="produit-nom">Nouilles instantanées</div>
+        <div class="produit-prix">200 FCFA</div>
         <button class="btn-ajouter">🛒 Ajouter</button>
       </div>
-
-      <div class="produit">
+      <div class="produit" onclick="window.location='produit.html'">
         <div class="produit-emoji">👕</div>
-        <p class="produit-nom">T-shirt coton</p>
-        <p class="produit-prix">2 500 FCFA</p>
+        <div class="produit-nom">T-shirt coton</div>
+        <div class="produit-prix">2 500 FCFA</div>
         <button class="btn-ajouter">🛒 Ajouter</button>
       </div>
-
-      <div class="produit">
+      <div class="produit" onclick="window.location='produit.html'">
         <div class="produit-emoji">📱</div>
-        <p class="produit-nom">Crédit téléphone</p>
-        <p class="produit-prix">500 FCFA</p>
+        <div class="produit-nom">Crédit téléphone</div>
+        <div class="produit-prix">500 FCFA</div>
         <button class="btn-ajouter">🛒 Ajouter</button>
       </div>
-
-      <div class="produit">
+      <div class="produit" onclick="window.location='produit.html'">
         <div class="produit-emoji">🥤</div>
-        <p class="produit-nom">Jus de bissap</p>
-        <p class="produit-prix">150 FCFA</p>
+        <div class="produit-nom">Jus de bissap</div>
+        <div class="produit-prix">150 FCFA</div>
         <button class="btn-ajouter">🛒 Ajouter</button>
       </div>
-
     </div>
   </div>
-<footer>
-  <p>© 2025 Wara Chop — Burkina Faso 🇧🇫</p>
-<p>Tous droits réservés</p>
-<br>
-<a href="apropos.html"
-  style="color:#ff6600; font-size:13px;">
-  ℹ️ À propos de Wara Chop
-</a>
-  <br>
-  <a href="admin.html" style="color:#ff6600; font-size:12px;">
-    👑 Accès Admin
-  </a>
-</footer>
+
+  <footer>
+    <p>© 2025 Wara Chop — Burkina Faso 🇧🇫</p>
+    <p>Tous droits réservés</p>
+    <a href="apropos.html">ℹ️ À propos de Wara Chop</a>
+    <a href="admin.html">👑 Accès Admin</a>
+  </footer>
+
+  <nav class="navbar">
+    <a href="index.html"><div>🏠</div><div>Accueil</div></a>
+    <a href="recherche.html"><div>🔍</div><div>Chercher</div></a>
+    <a href="notifications.html"><div>🔔</div><div>Alertes</div></a>
+    <a href="localisation.html"><div>📍</div><div>Carte</div></a>
+    <a href="profil.html"><div>👤</div><div>Profil</div></a>
+  </nav>
 
   <script>
     let panier = 0;
-    let boutons = document.querySelectorAll(".btn-ajouter");
-    boutons.forEach(function(bouton) {
-      bouton.addEventListener("click", function() {
-        panier = panier + 1;
-        document.querySelector(".panier-count").innerText = "🛒 Panier : " + panier + " article(s)";
-        bouton.style.backgroundColor = "green";
-        bouton.innerText = "✅ Ajouté";
+    document.querySelectorAll(".btn-ajouter").forEach(function(btn) {
+      btn.addEventListener("click", function(e) {
+        e.stopPropagation();
+        panier++;
+        document.getElementById("panier-count").innerText = "🛒 Panier : " + panier + " article(s)";
+        btn.style.background = "green";
+        btn.innerText = "✅ Ajouté";
       });
     });
   </script>
-<!-- BARRE DE NAVIGATION -->
-<div style="
-  position:fixed;
-  bottom:0;
-  left:0;
-  right:0;
-  background:white;
-  display:flex;
-  justify-content:space-around;
-  padding:10px 0;
-  box-shadow:0 -2px 10px rgba(0,0,0,0.1);
-  z-index:999;
-">
-  <a href="index.html" style="text-decoration:none; text-align:center;">
-    <div style="font-size:24px;">🏠</div>
-    <div style="font-size:11px; color:#999;">Accueil</div>
-  </a>
-  <a href="notifications.html" style="text-decoration:none; text-align:center;">
-    <div style="font-size:24px;">🔔</div>
-    <div style="font-size:11px; color:#999;">Alertes</div>
-  </a>
-  <a href="commande.html" style="text-decoration:none; text-align:center;">
-    <div style="font-size:24px;">🛒</div>
-    <div style="font-size:11px; color:#999;">Panier</div>
-  </a>
-  <a href="localisation.html" style="text-decoration:none; text-align:center;">
-    <div style="font-size:24px;">📍</div>
-    <div style="font-size:11px; color:#999;">Carte</div>
-  </a>
-  <a href="profil.html" style="text-decoration:none; text-align:center;">
-    <div style="font-size:24px;">👤</div>
-    <div style="font-size:11px; color:#999;">Profil</div>
-  </a>
-</div>
 
-<!-- ESPACE POUR LA BARRE -->
-<div style="height:70px;"></div>
 </body>
 </html>

@@ -5,116 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     * { margin:0; padding:0; box-sizing:border-box; }
-    body { background-color:#f5f5f5; font-family:Arial; }
-    header {
-      background-color:#ff6600;
-      padding:15px 20px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-    }
+    body { background-color:#f5f5f5; font-family:Arial; padding-bottom:70px; }
+    header { background-color:#ff6600; padding:15px 20px; display:flex; justify-content:space-between; align-items:center; }
     header h1 { color:white; font-size:20px; }
-    .btn-retour {
-      background:white;
-      color:#ff6600;
-      border:none;
-      padding:8px 15px;
-      border-radius:20px;
-      font-weight:bold;
-    }
-    .produit-image {
-      background:white;
-      text-align:center;
-      padding:40px 20px;
-      font-size:100px;
-    }
-    .produit-info {
-      background:white;
-      padding:20px;
-      margin-top:10px;
-    }
-    .produit-nom {
-      font-size:24px;
-      font-weight:bold;
-      color:#1a1a1a;
-    }
-    .produit-prix {
-      font-size:28px;
-      color:#ff6600;
-      font-weight:bold;
-      margin-top:10px;
-    }
-    .produit-vendeur {
-      color:#666;
-      font-size:14px;
-      margin-top:8px;
-    }
-    .badge {
-      background:#e8f5e9;
-      color:green;
-      padding:5px 12px;
-      border-radius:20px;
-      font-size:13px;
-      display:inline-block;
-      margin-top:8px;
-    }
-    .description {
-      background:white;
-      padding:20px;
-      margin-top:10px;
-    }
-    .description h3 {
-      font-size:18px;
-      margin-bottom:10px;
-      color:#1a1a1a;
-    }
-    .description p {
-      color:#666;
-      font-size:15px;
-      line-height:1.6;
-    }
-    .livraison {
-      background:white;
-      padding:20px;
-      margin-top:10px;
-    }
-    .livraison h3 {
-      font-size:18px;
-      margin-bottom:15px;
-      color:#1a1a1a;
-    }
-    .livraison-item {
-      display:flex;
-      align-items:center;
-      margin-bottom:12px;
-    }
-    .livraison-item span {
-      font-size:24px;
-      margin-right:12px;
-    }
-    .livraison-item p {
-      color:#666;
-      font-size:14px;
-    }
-    .livraison-item strong {
-      color:#1a1a1a;
-    }
-    .btn-commander {
-      position:fixed;
-      bottom:0;
-      left:0;
-      right:0;
-      background:#ff6600;
-      color:white;
-      border:none;
-      padding:20px;
-      font-size:20px;
-      font-weight:bold;
-      text-align:center;
-    }
-    .espace-bas {
-      height:80px;
-    }
+    .btn-retour { background:white; color:#ff6600; border:none; padding:8px 15px; border-radius:20px; font-weight:bold; }
+    .produit-image { background:white; text-align:center; padding:40px 20px; font-size:100px; }
+    .produit-info { background:white; padding:20px; margin-top:10px; }
+    .produit-nom { font-size:24px; font-weight:bold; color:#1a1a1a; }
+    .produit-prix { font-size:28px; color:#ff6600; font-weight:bold; margin-top:10px; }
+    .produit-vendeur { color:#666; font-size:14px; margin-top:8px; }
+    .badge { background:#e8f5e9; color:green; padding:5px 12px; border-radius:20px; font-size:13px; display:inline-block; margin-top:8px; }
+    .description { background:white; padding:20px; margin-top:10px; }
+    .description h3 { font-size:18px; margin-bottom:10px; color:#1a1a1a; }
+    .description p { color:#666; font-size:15px; line-height:1.6; }
+    .livraison { background:white; padding:20px; margin-top:10px; }
+    .livraison h3 { font-size:18px; margin-bottom:15px; color:#1a1a1a; }
+    .livraison-item { display:flex; align-items:center; margin-bottom:12px; }
+    .livraison-item span { font-size:24px; margin-right:12px; }
+    .livraison-item p { color:#666; font-size:14px; }
+    .livraison-item strong { color:#1a1a1a; }
+    .btn-commander { position:fixed; bottom:70px; left:0; right:0; background:#ff6600; color:white; border:none; padding:18px; font-size:20px; font-weight:bold; text-align:center; z-index:998; }
+    .navbar { position:fixed; bottom:0; left:0; right:0; background:white; display:flex; justify-content:space-around; padding:10px 0; box-shadow:0 -2px 10px rgba(0,0,0,0.1); z-index:999; }
+    .navbar a { text-decoration:none; text-align:center; }
+    .navbar a div:first-child { font-size:24px; }
+    .navbar a div:last-child { font-size:11px; color:#999; }
   </style>
 </head>
 <body>
@@ -126,10 +40,8 @@
     </a>
   </header>
 
-  <!-- IMAGE PRODUIT -->
   <div class="produit-image">🍜</div>
 
-  <!-- INFOS PRODUIT -->
   <div class="produit-info">
     <div class="produit-nom">Nouilles instantanées</div>
     <div class="produit-prix">200 FCFA</div>
@@ -137,18 +49,14 @@
     <div class="badge">✅ En stock</div>
   </div>
 
-  <!-- DESCRIPTION -->
   <div class="description">
     <h3>📝 Description</h3>
-    <p>
-      Nouilles instantanées de qualité supérieure.
-      Cuisson rapide en 3 minutes. Disponible en
-      plusieurs saveurs. Idéal pour un repas rapide
-      et savoureux au Burkina Faso.
-    </p>
+    <p>Nouilles instantanées de qualité supérieure.
+    Cuisson rapide en 3 minutes. Disponible en
+    plusieurs saveurs. Idéal pour un repas rapide
+    et savoureux au Burkina Faso.</p>
   </div>
 
-  <!-- LIVRAISON -->
   <div class="livraison">
     <h3>🛵 Livraison</h3>
     <div class="livraison-item">
@@ -157,7 +65,7 @@
     </div>
     <div class="livraison-item">
       <span>💰</span>
-      <p><strong>Frais de livraison :</strong> 500 FCFA</p>
+      <p><strong>Frais :</strong> 500 FCFA</p>
     </div>
     <div class="livraison-item">
       <span>📍</span>
@@ -169,55 +77,17 @@
     </div>
   </div>
 
-  <div class="espace-bas"></div>
-
-  <!-- BOUTON COMMANDER -->
-  <button class="btn-commander" onclick="commander()">
+  <button class="btn-commander" onclick="window.location='commande.html'">
     🛒 Commander maintenant
   </button>
 
-  <script>
-    function commander() {
-  window.location = "commande.html";
-} Un livreur vous contacte bientôt au Burkina Faso !");
-    }
-  </script>
-<!-- BARRE DE NAVIGATION -->
-<div style="
-  position:fixed;
-  bottom:0;
-  left:0;
-  right:0;
-  background:white;
-  display:flex;
-  justify-content:space-around;
-  padding:10px 0;
-  box-shadow:0 -2px 10px rgba(0,0,0,0.1);
-  z-index:999;
-">
-  <a href="index.html" style="text-decoration:none; text-align:center;">
-    <div style="font-size:24px;">🏠</div>
-    <div style="font-size:11px; color:#999;">Accueil</div>
-  </a>
-  <a href="notifications.html" style="text-decoration:none; text-align:center;">
-    <div style="font-size:24px;">🔔</div>
-    <div style="font-size:11px; color:#999;">Alertes</div>
-  </a>
-  <a href="commande.html" style="text-decoration:none; text-align:center;">
-    <div style="font-size:24px;">🛒</div>
-    <div style="font-size:11px; color:#999;">Panier</div>
-  </a>
-  <a href="localisation.html" style="text-decoration:none; text-align:center;">
-    <div style="font-size:24px;">📍</div>
-    <div style="font-size:11px; color:#999;">Carte</div>
-  </a>
-  <a href="profil.html" style="text-decoration:none; text-align:center;">
-    <div style="font-size:24px;">👤</div>
-    <div style="font-size:11px; color:#999;">Profil</div>
-  </a>
-</div>
+  <nav class="navbar">
+    <a href="index.html"><div>🏠</div><div>Accueil</div></a>
+    <a href="recherche.html"><div>🔍</div><div>Chercher</div></a>
+    <a href="notifications.html"><div>🔔</div><div>Alertes</div></a>
+    <a href="localisation.html"><div>📍</div><div>Carte</div></a>
+    <a href="profil.html"><div>👤</div><div>Profil</div></a>
+  </nav>
 
-<!-- ESPACE POUR LA BARRE -->
-<div style="height:70px;"></div>
 </body>
 </html>

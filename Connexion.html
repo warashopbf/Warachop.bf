@@ -5,74 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     * { margin:0; padding:0; box-sizing:border-box; }
-    body {
-      background-color:#1a1a1a;
-      font-family:Arial;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:center;
-      min-height:100vh;
-      padding:20px;
-    }
+    body { background-color:#1a1a1a; font-family:Arial; display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:100vh; padding:20px; }
     .logo { color:#ff6600; font-size:35px; font-weight:bold; margin-bottom:10px; }
     .slogan { color:#cccccc; font-size:14px; margin-bottom:40px; }
-    .carte {
-      background:white;
-      border-radius:20px;
-      padding:30px 25px;
-      width:100%;
-      max-width:400px;
-    }
+    .carte { background:white; border-radius:20px; padding:30px 25px; width:100%; max-width:400px; }
     .carte h2 { text-align:center; margin-bottom:25px; color:#1a1a1a; }
     .champ { margin-bottom:20px; }
     .champ label { display:block; color:#666; font-size:14px; margin-bottom:8px; }
-    .champ input {
-      width:100%;
-      padding:12px 15px;
-      border:2px solid #eee;
-      border-radius:10px;
-      font-size:16px;
-      outline:none;
-    }
+    .champ input { width:100%; padding:12px 15px; border:2px solid #eee; border-radius:10px; font-size:16px; outline:none; }
     .champ input:focus { border-color:#ff6600; }
-    .btn-connexion {
-      width:100%;
-      padding:15px;
-      background:#ff6600;
-      color:white;
-      border:none;
-      border-radius:10px;
-      font-size:18px;
-      font-weight:bold;
-    }
-    .inscription {
-      text-align:center;
-      margin-top:20px;
-      color:#666;
-      font-size:14px;
-    }
-    .inscription span { color:#ff6600; font-weight:bold; }
-    .options {
-      display:flex;
-      justify-content:space-around;
-      margin-top:25px;
-      padding-top:20px;
-      border-top:1px solid #eee;
-    }
-    .option-btn {
-      background:none;
-      border:2px solid #eee;
-      border-radius:10px;
-      padding:10px 15px;
-      font-size:13px;
-      color:#666;
-    }
-    .option-btn.actif {
-      border-color:#ff6600;
-      color:#ff6600;
-      font-weight:bold;
-    }
+    .btn-connexion { width:100%; padding:15px; background:#ff6600; color:white; border:none; border-radius:10px; font-size:18px; font-weight:bold; }
+    .inscription { text-align:center; margin-top:20px; color:#666; font-size:14px; }
+    .inscription a { color:#ff6600; font-weight:bold; text-decoration:none; }
+    .options { display:flex; justify-content:space-around; margin-top:25px; padding-top:20px; border-top:1px solid #eee; }
+    .option-btn { background:none; border:2px solid #eee; border-radius:10px; padding:10px 15px; font-size:13px; color:#666; }
+    .option-btn.actif { border-color:#ff6600; color:#ff6600; font-weight:bold; }
+    .retour { margin-top:20px; }
+    .retour a { color:#cccccc; text-decoration:none; font-size:14px; }
   </style>
 </head>
 <body>
@@ -85,12 +34,12 @@
 
     <div class="champ">
       <label>📱 Téléphone ou Email</label>
-      <input type="text" placeholder="Ex: 70 00 00 00"/>
+      <input type="text" id="tel" placeholder="Ex: 70 00 00 00"/>
     </div>
 
     <div class="champ">
       <label>🔒 Mot de passe</label>
-      <input type="password" placeholder="Ton mot de passe"/>
+      <input type="password" id="mdp" placeholder="Ton mot de passe"/>
     </div>
 
     <button class="btn-connexion" onclick="seConnecter()">
@@ -99,9 +48,7 @@
 
     <div class="inscription">
       Pas encore de compte ?
-      <span onclick="alert('Page inscription bientôt !')">
-        S'inscrire
-      </span>
+      <a href="inscription.html">S'inscrire</a>
     </div>
 
     <div class="options">
@@ -109,7 +56,10 @@
       <button class="option-btn" onclick="choisir(this)">🛵 Livreur</button>
       <button class="option-btn" onclick="choisir(this)">👤 Acheteur</button>
     </div>
+  </div>
 
+  <div class="retour">
+    <a href="index.html">← Retour à l'accueil</a>
   </div>
 
   <script>
@@ -121,12 +71,13 @@
     }
 
     function seConnecter() {
-      let tel = document.querySelectorAll("input")[0].value;
-      let mdp = document.querySelectorAll("input")[1].value;
+      let tel = document.getElementById("tel").value;
+      let mdp = document.getElementById("mdp").value;
       if (tel == "" || mdp == "") {
         alert("⚠️ Remplis tous les champs !");
       } else {
         alert("✅ Bienvenue sur Wara Chop !");
+        window.location = "index.html";
       }
     }
   </script>
